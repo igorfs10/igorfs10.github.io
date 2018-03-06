@@ -19,13 +19,16 @@ function resetar(){ //Zera todas as variaveis para forçar um jogo novo
 
 function verificarVencedor(){ // Verifica se alguma linha de X ou O foi feita ou se todos os espacos foram usados para definir o resultado da partida
 	if(espaco[1]=="X" && espaco[4]=="X" && espaco[7]=="X" || espaco[2]=="X" && espaco[5]=="X" && espaco[8]=="X" || espaco[3]=="X" && espaco[6]=="X" && espaco[9]=="X" || espaco[1]=="X" && espaco[2]=="X" && espaco[3]=="X" || espaco[4]=="X" && espaco[5]=="X" && espaco[6]=="X" || espaco[7]=="X" && espaco[8]=="X" && espaco[9]=="X" || espaco[1]=="X" && espaco[5]=="X" && espaco[9]=="X" || espaco[3]=="X" && espaco[5]=="X" && espaco[7]=="X"){
-		alert("Jogador X ganhou")
+		document.getElementById("status").innerHTML = "X ganhou"
+		document.getElementById("status").style.fontSize = "xx-large"
 		resetar()
 	}else if(espaco[1]=="O" && espaco[4]=="O" && espaco[7]=="O" || espaco[2]=="O" && espaco[5]=="O" && espaco[8]=="O" || espaco[3]=="O" && espaco[6]=="O" && espaco[9]=="O" || espaco[1]=="O" && espaco[2]=="O" && espaco[3]=="O" || espaco[4]=="O" && espaco[5]=="O" && espaco[6]=="O" || espaco[7]=="O" && espaco[8]=="O" && espaco[9]=="O" || espaco[1]=="O" && espaco[5]=="O" && espaco[9]=="O" || espaco[3]=="O" && espaco[5]=="O" && espaco[7]=="O"){
-		alert("Jogador O ganhou")
+		document.getElementById("status").innerHTML = "O ganhou"
+		document.getElementById("status").style.fontSize = "xx-large"
 		resetar()
 	}else if (espaco[1] && espaco[2] && espaco[3] && espaco[4] && espaco[5] && espaco[6] && espaco[7] && espaco[8] && espaco[9]){
-		alert("Empate")
+		document.getElementById("status").innerHTML = "Empate"
+		document.getElementById("status").style.fontSize = "xx-large"
 		resetar()
 	}
 }
@@ -55,14 +58,16 @@ function botaoJogador(){
 	resetar()
 	jogo = "jogador"
 	jogando = true
-	alert("Começou")
+	document.getElementById("status").innerHTML = "Jogador X"
+	document.getElementById("status").style.fontSize = "xx-large"
 }
 
 function botaoFacil(){
 	resetar()
 	jogo = "facil"
 	jogando = true
-	alert("Começou")
+	document.getElementById("status").innerHTML = "Jogador X"
+	document.getElementById("status").style.fontSize = "xx-large"
 	CPU() // O Computador sempre começa o jogo
 }
 
@@ -70,14 +75,16 @@ function botaoMedio(){
 	resetar()
 	jogo = "medio"
 	jogando = true
-	alert("Começou")
+	document.getElementById("status").innerHTML = "Jogador X"
+	document.getElementById("status").style.fontSize = "xx-large"
 	CPU() // O Computador sempre começa o jogo
 }
 function botaoDificil(){
 	resetar()
 	jogo = "dificil"
 	jogando = true
-	alert("Começou")
+	document.getElementById("status").innerHTML = "Jogador X"
+	document.getElementById("status").style.fontSize = "xx-large"
 	CPU() // O Computador sempre começa o jogo
 }
 
@@ -126,15 +133,20 @@ function botao(id){ // Vai pegar o id do quadro que o jogador clicar
 			if(jogador == 0){ // Verifica quem está jogando e poe o simbolo certo
 				espaco[id] = "X"
 				document.getElementById(id).style.fontSize = "xx-large" // Fonte Grande
+				document.getElementById("status").innerHTML = "Jogador O"
+				document.getElementById("status").style.fontSize = "xx-large"
 				novoTurno()
 			}else{
 				espaco[id] = "O"
 				document.getElementById(id).style.fontSize = "xx-large" // Fonte Grande
+				document.getElementById("status").innerHTML = "Jogador X"
+				document.getElementById("status").style.fontSize = "xx-large"
 				novoTurno()
 				CPU() // O Computador joga se estiver em uma partida contra a CPU
 			}
 		}
 	}else{
-		alert("Escolha o modo de jogo")
+		document.getElementById("status").innerHTML = "Escolha o modo de jogo"
+		document.getElementById("status").style.fontSize = "x-large"
 	}
 }

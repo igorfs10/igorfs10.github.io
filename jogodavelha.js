@@ -21,15 +21,15 @@ function verificarVencedor(){ // Verifica se alguma linha de X ou O foi feita ou
 	if(espaco[1]=="X" && espaco[4]=="X" && espaco[7]=="X" || espaco[2]=="X" && espaco[5]=="X" && espaco[8]=="X" || espaco[3]=="X" && espaco[6]=="X" && espaco[9]=="X" || espaco[1]=="X" && espaco[2]=="X" && espaco[3]=="X" || espaco[4]=="X" && espaco[5]=="X" && espaco[6]=="X" || espaco[7]=="X" && espaco[8]=="X" && espaco[9]=="X" || espaco[1]=="X" && espaco[5]=="X" && espaco[9]=="X" || espaco[3]=="X" && espaco[5]=="X" && espaco[7]=="X"){
 		document.getElementById("status").innerHTML = "X ganhou"
 		document.getElementById("status").style.fontSize = "xx-large"
-		resetar()
+		jogando = false
 	}else if(espaco[1]=="O" && espaco[4]=="O" && espaco[7]=="O" || espaco[2]=="O" && espaco[5]=="O" && espaco[8]=="O" || espaco[3]=="O" && espaco[6]=="O" && espaco[9]=="O" || espaco[1]=="O" && espaco[2]=="O" && espaco[3]=="O" || espaco[4]=="O" && espaco[5]=="O" && espaco[6]=="O" || espaco[7]=="O" && espaco[8]=="O" && espaco[9]=="O" || espaco[1]=="O" && espaco[5]=="O" && espaco[9]=="O" || espaco[3]=="O" && espaco[5]=="O" && espaco[7]=="O"){
 		document.getElementById("status").innerHTML = "O ganhou"
 		document.getElementById("status").style.fontSize = "xx-large"
-		resetar()
+		jogando = false
 	}else if (espaco[1] && espaco[2] && espaco[3] && espaco[4] && espaco[5] && espaco[6] && espaco[7] && espaco[8] && espaco[9]){
 		document.getElementById("status").innerHTML = "Empate"
 		document.getElementById("status").style.fontSize = "xx-large"
-		resetar()
+		jogando = false
 	}
 }
 

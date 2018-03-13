@@ -4,6 +4,7 @@ var jogando = false;
 var jogador = 0;
 var id = 0;
 
+
 function resetar(){ //Zera todas as variaveis para forçar um jogo novo
 	espaco[0] = "";
 	espaco[1] = "";
@@ -21,17 +22,8 @@ function resetar(){ //Zera todas as variaveis para forçar um jogo novo
 }
 
 function verificarVencedor(){ // Verifica se alguma linha de X ou O foi feita ou se todos os espacos foram usados para definir o resultado da partida
-	if((espaco[0]==="X" && espaco[3]==="X" && espaco[6]==="X") || (espaco[1]==="X" && espaco[4]==="X" && espaco[7]==="X") || (espaco[2]==="X" && espaco[5]==="X" && espaco[8]==="X") || (espaco[0]==="X" && espaco[1]==="X" && espaco[2]==="X") || (espaco[3]==="X" && espaco[4]==="X" && espaco[5]==="X") || (espaco[6]==="X" && espaco[7]==="X" && espaco[8]==="X") || (espaco[0]==="X" && espaco[4]==="X" && espaco[8]==="X") || (espaco[2]==="X" && espaco[4]==="X" && espaco[6]==="X")){
-		document.getElementById("status").innerHTML = "X ganhou";
-		document.getElementById("status").style.fontSize = "xx-large";
-		jogando = false;
-	}else if((espaco[0]==="O" && espaco[3]==="O" && espaco[6]==="O") || (espaco[1]==="O" && espaco[4]==="O" && espaco[7]==="O") || (espaco[2]==="O" && espaco[5]==="O" && espaco[8]==="O") || (espaco[0]==="O" && espaco[1]==="O" && espaco[2]==="O") || (espaco[3]==="O" && espaco[4]==="O" && espaco[5]==="O") || (espaco[6]==="O" && espaco[7]==="O" && espaco[8]==="O") || (espaco[0]==="O" && espaco[4]==="O" && espaco[8]==="O") || (espaco[2]==="O" && espaco[4]==="O" && espaco[6]==="O")){
-		document.getElementById("status").innerHTML = "O ganhou";
-		document.getElementById("status").style.fontSize = "xx-large";
-		jogando = false;
-	}else if (espaco[0] && espaco[1] && espaco[2] && espaco[3] && espaco[4] && espaco[5] && espaco[6] && espaco[7] && espaco[8]){
-		document.getElementById("status").innerHTML = "Empate";
-		document.getElementById("status").style.fontSize = "xx-large";
+mostrarVencedor()
+	if (document.getElementById("status").innerHTML === "X ganhou" || document.getElementById("status").innerHTML === "O ganhou" || document.getElementById("status").innerHTML === "Empate"){
 		jogando = false;
 	}
 }
@@ -44,33 +36,27 @@ function turno(){ // Muda a variavel para ver quem vai jogar
 	}
 }
 
-
-function atualizarQuadro(){ // Verifica as variaveis dos campos do jogo e faz com que apareça nos campos
-	for(id = 0;id <= 8; id++){
-		document.getElementById(id).innerHTML = espaco[id];
-	}
-}
-
 function novoTurno(){ // Realiza os passos repetitivos sempre que alguem joga
 	turno();
 	atualizarQuadro();
 	verificarVencedor();
+	if(jogando === true){
+		vezJogador();				
+	}
 }
 
 function botaoJogador(){
 	resetar();
 	jogo = "jogador";
 	jogando = true;
-	document.getElementById("status").innerHTML = "Jogador X";
-	document.getElementById("status").style.fontSize = "xx-large";
+	vezJogador();
 }
 
 function botaoFacil(){
 	resetar();
 	jogo = "facil";
 	jogando = true;
-	document.getElementById("status").innerHTML = "Jogador X";
-	document.getElementById("status").style.fontSize = "xx-large";
+	vezJogador();
 	CPU(); // O Computador sempre começa o jogo
 }
 
@@ -78,16 +64,14 @@ function botaoMedio(){
 	resetar();
 	jogo = "medio";
 	jogando = true;
-	document.getElementById("status").innerHTML = "Jogador X";
-	document.getElementById("status").style.fontSize = "xx-large";
+	vezJogador();
 	CPU(); // O Computador sempre começa o jogo
 }
 function botaoDificil(){
 	resetar();
 	jogo = "dificil";
 	jogando = true;
-	document.getElementById("status").innerHTML = "Jogador X";
-	document.getElementById("status").style.fontSize = "xx-large";
+	vezJogador();
 	CPU(); // O Computador sempre começa o jogo
 }
 
@@ -135,23 +119,16 @@ function botao(id){ // Vai pegar o id do quadro que o jogador clicar
 		if(espaco[id] === ""){ // Verifica se o espaco clicado ja foi usado
 			if(jogador === 0){ // Verifica quem está jogando e poe o simbolo certo
 				espaco[id] = "X";
-				document.getElementById(id).style.fontSize = "xx-large"; // Fonte Grande
-				document.getElementById("status").innerHTML = "Jogador O";
-				document.getElementById("status").style.fontSize = "xx-large";
 				novoTurno();
 			}else{
 				espaco[id] = "O";
-				document.getElementById(id).style.fontSize = "xx-large"; // Fonte Grande
-				document.getElementById("status").innerHTML = "Jogador X";
-				document.getElementById("status").style.fontSize = "xx-large";
 				novoTurno();
-				if(jogando === true){
+				if(jogando === true && (jogo === "facil" || jogo === "medio" || jogo === "dificil")){
 					CPU(); // O Computador joga se estiver em uma partida contra a CPU
 				}
 			}
 		}
 	}else{
-		document.getElementById("status").innerHTML = "Escolha o modo de jogo";
-		document.getElementById("status").style.fontSize = "x-large";
+		vezJogador();
 	}
 }

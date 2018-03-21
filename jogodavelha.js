@@ -38,7 +38,6 @@ function turno(){ // Muda a variavel para ver quem vai jogar
 
 function novoTurno(){ // Realiza os passos repetitivos sempre que alguem joga
 	turno();
-	atualizarQuadro();
 	verificarVencedor();
 	if(jogando === true){
 		vezJogador();				
@@ -110,12 +109,8 @@ function CPU(){ // O Computador só jogar se a variável jogo for facil, medio o
 		}
 		
 	}else if(jogo === "dificil"){
-		if(espaco[0]===""){ //Comeca pelo canto
-			botao(0);
-		}else if(espaco[8]===""){
-			botao(8);
 		// Verifica se tem dois espacos e marca no proximo para ganhar
-		}else if((espaco[1]==="X" && espaco[2]==="X" && espaco[0]==="") || (espaco[4]==="X" && espaco[8]==="X" && espaco[0]==="") || (espaco[3]==="X" && espaco[6]==="X" && espaco[0]==="")){
+		if((espaco[1]==="X" && espaco[2]==="X" && espaco[0]==="") || (espaco[4]==="X" && espaco[8]==="X" && espaco[0]==="") || (espaco[3]==="X" && espaco[6]==="X" && espaco[0]==="")){
 			botao(0);
 		}else if((espaco[0]==="X" && espaco[2]==="X" && espaco[1]==="") || (espaco[4]==="X" && espaco[7]==="X" && espaco[1]==="")){
 			botao(1);
@@ -153,6 +148,10 @@ function CPU(){ // O Computador só jogar se a variável jogo for facil, medio o
 		}else if((espaco[0]==="O" && espaco[4]==="O" && espaco[8]==="") || (espaco[6]==="O" && espaco[7]==="O" && espaco[8]==="") || (espaco[2]==="O" && espaco[5]==="O" && espaco[8]==="")){
 			botao(8);
 		// Se nao cair nos casos acima, continue jogando
+		}else if(espaco[0]===""){ //Comeca pelo canto
+			botao(0);
+		}else if(espaco[8]===""){
+			botao(8);
 		}else if(espaco[4]===""){
 			botao(4);
 		}else if(espaco[2]===""){
@@ -176,9 +175,11 @@ function botao(id){ // Vai pegar o id do quadro que o jogador clicar
 		if(espaco[id] === ""){ // Verifica se o espaco clicado ja foi usado
 			if(jogador === 0){ // Verifica quem está jogando
 				espaco[id] = "X";
+				mostrarNoQuadro(id);
 				novoTurno();
 			}else{
 				espaco[id] = "O";
+				mostrarNoQuadro(id);
 				novoTurno();
 				if(jogando === true && (jogo === "facil" || jogo === "medio" || jogo === "dificil")){
 					CPU(); // O Computador joga se estiver em uma partida contra a CPU

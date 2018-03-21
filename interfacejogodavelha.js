@@ -30,3 +30,7 @@ function atualizarQuadro(){ // Verifica as variaveis dos campos do jogo e faz co
 		document.getElementById(id).innerHTML = espaco[id]; // Escreve o que esta na variavel no quadro
 	}
 }
+
+function mostrarNoQuadro(id){
+	document.getElementById(id).innerHTML = espaco[id]; // Escreve "X" ou "O" no espaco clicado
+}

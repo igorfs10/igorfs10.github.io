@@ -17,7 +17,12 @@ function resetar(){ //Zera todas as variaveis e atualiza o quadro para forçar u
 	espaco[8] = "";
 	jogo = "";
 	jogando = false;
-	jogador = 0;
+	jogador = id = Math.floor(Math.random() * 10) + 1;
+	if(jogador <= 5){
+		jogador = 0;
+	}else{
+		jogador = 1;
+	}
 	atualizarQuadro();
 }
 
@@ -44,34 +49,14 @@ function novoTurno(){ // Realiza os passos repetitivos sempre que alguem joga
 	}
 }
 
-function botaoJogador(){ // Jogador contra jogador
+function botaoJogo(tipoDeJogo){ // Botao para comecar o jogo
 	resetar();
-	jogo = "jogador";
+	jogo = tipoDeJogo;
 	jogando = true;
 	vezJogador();
-}
-
-function botaoFacil(){ // Jogo contra o computador facil
-	resetar();
-	jogo = "facil";
-	jogando = true;
-	vezJogador();
-	CPU(); // O Computador sempre começa o jogo
-}
-
-function botaoMedio(){ // Jogo contra o computador medio
-	resetar();
-	jogo = "medio";
-	jogando = true;
-	vezJogador();
-	CPU(); // O Computador sempre começa o jogo
-}
-function botaoDificil(){ // Jogo contra o computador dificil
-	resetar();
-	jogo = "dificil";
-	jogando = true;
-	vezJogador();
-	CPU(); // O Computador sempre começa o jogo
+	if(jogador === 0 && (jogo === "facil" || jogo === "medio" || jogo === "dificil")){
+		CPU();
+	}
 }
 
 function sortearCPU(){
@@ -147,6 +132,21 @@ function CPU(){ // O Computador só jogar se a variável jogo for facil, medio o
 			botao(7);
 		}else if((espaco[0]==="O" && espaco[4]==="O" && espaco[8]==="") || (espaco[6]==="O" && espaco[7]==="O" && espaco[8]==="") || (espaco[2]==="O" && espaco[5]==="O" && espaco[8]==="")){
 			botao(8);
+		// Tentar fechar o jogador se ele comecar
+		}else if((espaco[0]==="O" || espaco[1]==="O" ||espaco[2]==="O" || espaco[3]==="O" ||espaco[5]==="O" ||espaco[6]==="O" || espaco[7]==="O" ||espaco[8]==="O") && espaco[0]!="X" && espaco[4]===""){
+			botao(4);
+		}else if(((espaco[1]==="O" && espaco[3]==="O") || (espaco[1]==="O" && espaco[5]==="O") || (espaco[3]==="O" && espaco[7]==="O") || (espaco[5]==="O" && espaco[7]==="O")) && espaco[4]===""){
+			botao(4);
+		}else if((espaco[1]==="O" || espaco[3]==="O") && espaco[0]===""){
+			botao(0);
+		}else if((espaco[5]==="O" || espaco[7]==="O") && espaco[8]===""){
+			botao(8);
+		}else if(espaco[1]==="O" && espaco[6]==="O" && espaco[4]===""){
+			botao(4);
+		}else if(espaco[4]==="X" && espaco[7]===""){
+			botao(7);
+		}else if(espaco[4]==="X" && espaco[1]===""){
+			botao(1);
 		// Se nao cair nos casos acima, continue jogando
 		}else if(espaco[0]===""){ //Comeca pelo canto
 			botao(0);

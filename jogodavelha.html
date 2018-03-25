@@ -4,48 +4,68 @@
 		<title>
 			Jogo da velha
 		</title>
+		<style>
+			.quadro
+			{
+			font-size:100px;
+			}
+			.info
+			{
+			font-size:30px;
+			color:#003c72;
+			}
+			.botao
+			{
+			background-color: Transparent;
+			font-size:14px;
+			color:#2d7200;
+			font-weight:bold;
+			border:none;
+			outline:none;
+			}
+		</style>
 	</head>
 	<body>
 		<table width="500" height="500" border="1" align="center">
 			<tr height="16%" bgcolor="#B3E5FC">
-				<td width="33%" align="center" id="status">
-					<font face="Verdana" size="4">Jogo da velha</font>
+				<td width="33%" align="center" id="status" class="info">
+					Jogo da velha
 				</td>
-				<td width="34%" align="center" valign="middle">
+				<td width="34%" align="center" valign="middle" id="singleplayer">
 					<form>
-						<input type="button" id="btnJogador" value="Dois Jogadores" onclick="botaoJogo(this.id)">
+						<input type="button" id="btnJogador" value="Dois Jogadores" onclick="botaoJogo(this.id)" class="botao">
 					</form>
 				</td>
-				<td width="33%" align="center" valign="middle">
+				<td width="33%" align="center" valign="middle" id="multiplayer">
 					<form>
-						<input type="button" id="facil" value="CPU (Fácil)" onclick="botaoJogo(this.id)">
-						<input type="button" id="medio" value="CPU (Intermediário)" onclick="botaoJogo(this.id)">
-						<input type="button" id="dificil" value="CPU (Difícil)" onclick="botaoJogo(this.id)">
+						<input type="button" id="facil" value="CPU (Fácil)" onclick="botaoJogo(this.id)" class="botao">
+						<input type="button" id="medio" value="CPU (Intermediário)" onclick="botaoJogo(this.id)" class="botao">
+						<input type="button" id="dificil" value="CPU (Difícil)" onclick="botaoJogo(this.id)" class="botao">
 					</form>
 				</td>
 			</tr>
 			<tr height="28%" bgcolor="#C8E6C9" align="center">
-				<td width="33%" id="0" onclick="botao(this.id)">
+				<td width="33%" id="0" onclick="botao(this.id)" class="quadro">
 				</td>
-				<td width="34%" id="1" onclick="botao(this.id)">
+				<td width="34%" id="1" onclick="botao(this.id)" class="quadro">
 				</td>
-				<td width="33%" id="2" onclick="botao(this.id)">
+				<td width="33%" id="2" onclick="botao(this.id)" class="quadro">
 				</td>
 			</tr bgcolor="#C8E6C9">
 			<tr height="28%" bgcolor="#C8E6C9" align="center">
-				<td width="33%" id="3" onclick="botao(this.id)">
+				<td width="33%" id="3" onclick="botao(this.id)" class="quadro">
 				</td>
-				<td width="34%" id="4" onclick="botao(this.id)">
+				<td width="34%" id="4" onclick="botao(this.id)" class="quadro">
 				</td>
-				<td width="33%" id="5" onclick="botao(this.id)">
+				<td width="33%" id="5" onclick="botao(this.id)" class="quadro">
 				</td>
 			</tr>
 			<tr height="28%" bgcolor="#C8E6C9" align="center">
-				<td width="33%" id="6" onclick="botao(this.id)">
+				<td width="33%" id="6" onclick="botao(this.id)" class="quadro">
 				</td>
-				<td width="34%" id="7" onclick="botao(this.id)">
+				<td width="34%" id="7" onclick="botao(this.id)" class="quadro">
 				</td>
-				<td width="33%" id="8" onclick="botao(this.id)">
+				<td width="33%" id="8" onclick="botao(this.id)" class="quadro">
 				</td>
 			</tr>
 		</table>

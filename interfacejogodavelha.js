@@ -1,8 +1,3 @@
-document.getElementById("status").style.fontSize = "x-large"; // Fonte grande para o quadro de informacoes
-for(id = 0;id <= 8; id++){
-		document.getElementById(id).style.fontSize = "xx-large"; // Fonte muito grande nos quadros
-}
-
 function mostrarVencedor(){ // Verifica se alguma linha de X ou O foi feita ou se todos os espacos foram usados para definir o resultado da partida e mostrar quem venceu
 	if((espaco[0]==="X" && espaco[3]==="X" && espaco[6]==="X") || (espaco[1]==="X" && espaco[4]==="X" && espaco[7]==="X") || (espaco[2]==="X" && espaco[5]==="X" && espaco[8]==="X") || (espaco[0]==="X" && espaco[1]==="X" && espaco[2]==="X") || (espaco[3]==="X" && espaco[4]==="X" && espaco[5]==="X") || (espaco[6]==="X" && espaco[7]==="X" && espaco[8]==="X") || (espaco[0]==="X" && espaco[4]==="X" && espaco[8]==="X") || (espaco[2]==="X" && espaco[4]==="X" && espaco[6]==="X")){
 		document.getElementById("status").innerHTML = "X ganhou";
@@ -21,7 +16,7 @@ function vezJogador(){ // Mostra quem esta jogando
 			document.getElementById("status").innerHTML = "Jogador X";
 		}
 	}else{
-		document.getElementById("status").innerHTML = "Escolha o modo de jogo";
+		document.getElementById("status").innerHTML = "Escolha o jogo";
 	}
 }
 

@@ -46,7 +46,7 @@ function turno(){
 		oponente = "X";
 	}else{
 		jogador = "X";
-		oponente = "O"
+		oponente = "O";
 	}
 }
 
@@ -181,7 +181,7 @@ function botaoTipoDeJogo(tipoDeJogo){
 	jogando = true;
 	vezJogador();
 	// O computador comeca se for "X"
-	if(cpu === "X" && (jogo === "facil" || jogo === "medio" || jogo === "dificil")){
+	if(cpu === jogador && (jogo === "facil" || jogo === "medio" || jogo === "dificil")){
 		vezCPU();
 	}
 }

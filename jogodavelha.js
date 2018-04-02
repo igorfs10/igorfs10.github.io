@@ -1,4 +1,4 @@
-var espaco = ["", "", "", "", "", "", "", "", ""];
+﻿var espaco = ["", "", "", "", "", "", "", "", ""];
 var jogo = "";
 var jogando = false;
 var jogador = 0;
@@ -41,7 +41,13 @@ function turno(){ // Muda a variavel para ver quem vai jogar
 	}
 }
 
-function novoTurno(){ // Realiza os passos repetitivos sempre que alguem joga
+function novoTurno(id){ // Realiza os passos repetitivos sempre que alguem joga
+	if(jogador===1){
+		espaco[id] = "O";
+	}else{
+		espaco[id] = "X";
+	}
+	mostrarNoQuadro(id);
 	turno();
 	verificarVencedor();
 	if(jogando === true){
@@ -174,13 +180,9 @@ function botao(id){ // Vai pegar o id do quadro que o jogador clicar
 	if(jogando === true){
 		if(espaco[id] === ""){ // Verifica se o espaco clicado ja foi usado
 			if(jogador === 0){ // Verifica quem está jogando
-				espaco[id] = "X";
-				mostrarNoQuadro(id);
-				novoTurno();
+				novoTurno(id);
 			}else{
-				espaco[id] = "O";
-				mostrarNoQuadro(id);
-				novoTurno();
+				novoTurno(id);
 				if(jogando === true && (jogo === "facil" || jogo === "medio" || jogo === "dificil")){
 					CPU(); // O Computador joga se estiver em uma partida contra a CPU
 				}

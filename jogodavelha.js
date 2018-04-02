@@ -50,17 +50,6 @@ function turno(){
 	}
 }
 
-// Realiza os passos repetitivos sempre que alguem joga
-function novoTurno(id){
-	espaco[id] = jogador;
-	mostrarNoQuadro(id);
-	verificarVencedor();
-	turno();
-	if(jogando === true){
-		vezJogador();
-	}
-}
-
 // Sorteia um espaco, se sortear um espaco usado, sortea um novo
 function sortearEspaco(){
 	do{
@@ -191,7 +180,13 @@ function jogar(id){
 	if(jogando === true){
 		// Verifica se o espaco clicado ja foi usado
 		if(espaco[id] === ""){
-			novoTurno(id);
+			espaco[id] = jogador;
+			mostrarNoQuadro(id);
+			verificarVencedor();
+			turno();
+			if(jogando === true){
+				vezJogador();
+			}
 			// O computador joga se estiver em uma partida contra a CPU
 			if(jogando === true && jogador === cpu && (jogo === "facil" || jogo === "medio" || jogo === "dificil")){
 				vezCPU();

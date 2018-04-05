@@ -7,9 +7,6 @@ function mostrarVencedor(){
 		}
 	}else if (espaco[0] && espaco[1] && espaco[2] && espaco[3] && espaco[4] && espaco[5] && espaco[6] && espaco[7] && espaco[8]){
 		document.getElementById("status").innerHTML = "Empate";
-		for(id = 0;id <= 8; id++){
-			document.getElementById(id).dataset.selecionado = 0;
-		}
 	}
 }
 

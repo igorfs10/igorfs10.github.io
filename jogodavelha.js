@@ -28,7 +28,7 @@ function resetar(){
 	}else{
 		cpu = oponente;
 	}
-	atualizarQuadro();
+	limparQuadro();
 }
 
 // Verifica se alguma linha de X ou O foi feita ou se todos os espacos foram usados para definir o resultado da partida

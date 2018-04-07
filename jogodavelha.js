@@ -31,7 +31,7 @@ function resetar(){
 	limparQuadro();
 }
 
-// Verifica se alguma linha de X ou O foi feita ou se todos os espacos foram usados para definir o resultado da partida
+// Verifica se alguma linha de X ou O foi feita ou se todos os espacos foram usados para definir o resultado da partida e impedir que alguém jogue
 function verificarVencedor(){
     mostrarVencedor();
 	if(document.getElementById("status").innerHTML === jogador + " ganhou" || document.getElementById("status").innerHTML === "Empate"){

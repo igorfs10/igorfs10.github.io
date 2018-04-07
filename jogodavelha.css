@@ -8,7 +8,7 @@
 }
 
 .quadro{
-	font-size: 100px;
+	font-size: 120px;
 	background-color: #C8E6C9;
 	border-bottom-left-radius: 10px;
 	border-top-left-radius: 10px;
@@ -17,13 +17,19 @@
 	transition: 1s;
 }
 
-td[data-selecionado="1"]:hover{
-	background-color: #81C784;
+td[data-selecionado="X"]:hover{
+	background-color: #64B5F6;
+	transition: 1s;
+}
+
+td[data-selecionado="O"]:hover{
+	background-color: #E57373;
 	transition: 1s;
 }
 
 .info{
-	font-size: 30px;
+	font-size: 27px;
+	font-weight: bold;
 	color: #003c72;
 	background-color: #B3E5FC;
 	border-bottom-left-radius: 10px;
@@ -34,7 +40,7 @@ td[data-selecionado="1"]:hover{
 
 .botao{
 	background-color: Transparent;
-	font-size:14px;
+	font-size:17px;
 	font-weight:bold;
 	border:none;
 	border-bottom-left-radius: 5px;

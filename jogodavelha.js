@@ -20,9 +20,10 @@ function resetar(){
 	espaco[8] = "";
 	jogo = "";
 	jogando = false;
-	primeiroJogador = Math.floor(Math.random() * 10) + 1;
 	jogador = "X";
 	oponente = "O";
+	// Sorteia para ver se o computador vai ser X ou O
+	primeiroJogador = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
 	if(primeiroJogador <= 5){
 		cpu = jogador;
 	}else{
@@ -53,7 +54,7 @@ function turno(){
 // Sorteia um espaco, se sortear um espaco usado, sortea um novo
 function sortearEspaco(){
 	do{
-		id = Math.floor((Math.random() * 9) + 1) - 1;
+		id = Math.floor(Math.random() * (8 - 0 + 1)) + 0;
 	}while(espaco[id] === jogador || espaco[id] === oponente);
 	return id;
 }

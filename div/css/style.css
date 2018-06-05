@@ -1,0 +1,205 @@
+p, ul, li, ol, h1{
+    padding: 0px;
+    margin: 0px;
+}
+
+#header{
+    width: 800px;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.2s;
+	background-size:1300px;
+}
+
+#header[data-imagem="1"]{
+    background-image: url(../imagens/guitarra.jpg);
+}
+
+#header[data-imagem="2"]{
+    background-image: url(../imagens/baixo.jpg);
+}
+
+#header[data-imagem="3"]{
+    background-image: url(../imagens/bateria.jpg);
+}
+
+#header[data-imagem="4"]{
+    background-image: url(../imagens/teclado.jpg);
+}
+
+#header[data-imagem="5"]{
+    background-image: url(../imagens/violino.jpg);
+}
+
+#header[data-imagem="6"]{
+    background-image: url(../imagens/microfone.jpg);
+}
+
+.anterior, .proximo{
+    height: 70px;
+    width: 64px;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    margin-top: 190px;
+    opacity: 0.5;
+	transition: 1s;
+}
+
+.anterior:hover, .proximo:hover{
+    cursor:pointer;
+	background-color:#cccccc;
+	transition: 1s;
+}
+
+.anterior{
+    background-image: url(../imagens/anterior.png);
+}
+
+.proximo{
+    background-image: url(../imagens/proximo.png);
+    margin-left: 736px;
+}
+
+#caixa_menu{
+    width: 800px;
+    height: 60px;
+    opacity: 0.9;
+    position: fixed;
+}
+
+#home_menu, #item_menu{
+    width: 200px;
+    float: left;
+    text-align: center;
+	color: #000000;
+}
+
+#item_menu{
+    height: 40px;
+    padding-top: 20px;
+    font-family: arial;
+    font-size: 20;
+    font-weight: bold;
+    transition: 1s;
+}
+
+#home_menu{
+    height: 60px;
+    background-image: url(../imagens/home.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#item_menu:hover, #home_menu:hover{
+    background-color: #ffffff;
+    opacity: 0.7;
+    transition: 1s;
+    cursor: pointer;
+}
+
+#caixa_menu[data-selecionado="azul"]{
+    background-color: #64B5F6;
+    transition: 1s;
+}
+
+#caixa_menu[data-selecionado="branco"]{
+    background-color: white;
+    transition: 1s;
+}
+
+#caixa_menu[data-selecionado="verde"]{
+    background-color: #81C784;
+    transition: 1s;
+}
+
+#caixa_menu[data-selecionado="amarelo"]{
+    background-color: #FFF176;
+    transition: 1s;
+}
+
+#caixa_menu[data-selecionado="vermelho"]{
+    background-color: #E57373;
+    transition: 1s;
+}
+
+#conteudo{
+	padding-top: 50px;
+	width: 800px;
+	height: 500px;
+	background-color: #cccccc;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.quadro_noticia{
+	width: 200px;
+	height: 450px;
+	background-color: #ffffff;
+	float: left;
+	margin-left: 50px;
+	border-radius: 20px;
+}
+
+.titulo_noticia{
+	width: 200px;
+	height: 38px;
+	padding-top: 12px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	background-color: #555555;
+	border-radius: 20px 20px 0px 0px;
+	color: #ffffff;
+}
+
+.imagem_noticia{
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+}
+
+.texto_noticia{
+	width: 200px;
+	height: 200px;
+	background-color: pink;
+	border-radius: 0px 0px 20px 20px;
+}
+
+#rodape{
+	width: 800px;
+	height: 70px;
+	background-color: red;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#direitos{
+	width: 300px;
+	height: 70px;
+	padding-top: 25px;
+	padding-left: 50px;
+	float: left;
+	color: #ffffff;
+	font-size: 18px;
+}
+
+#redes_sociais{
+	width: 200px;
+	height: 70px;
+	background-color: green;
+	margin-left: 600px;
+	border-radius: 20px 0px 0px 20px;
+}
+
+.rede_social{
+	width: 32px;
+	height: 32px;
+	padding-top: 18px;
+	padding-left: 25px;
+	float: left;
+}

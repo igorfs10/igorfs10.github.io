@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="formasigor.css">
+		<title>
+			Formas Geometricas
+		</title>
+	</head>
+	<body>
+		<script src="formasigor.js"></script>
+		<div id="conteudo">
+			<form>
+				<div id="titulo">Formas Geometricas</div>
+				<div id="opcoes">
+					<div id="formas">
+						<div id="escolha">Forma:</div>
+						<div id="button"><button id="circulo" type="button" onclick="mostrarCirculo()">Circulo</button></div>
+						<div id="button"><button id="triangulo" type="button" onclick="mostrarTriangulo()">Triangulo</button></div>
+						<div id="button"><button id="quadrilatero" type="button" onclick="mostrarQuadrilatero()">Quadrilatero</button></div>
+						<div id="button"><button id="poligono" type="button" onclick="mostrarPoligono()">Poligono</button></div>
+					</div>
+					<div id="calculos1"></div>
+					<div id="calculos2"></div>
+					<div id="calcular"><button type="button" onclick="colocarTabela()">Calcular</button></div>
+				</div>
+			</form>
+		</div>
+		<div id="table">
+			<table id="tabela" border="0">
+				<tr>
+					<td bgcolor="#999999">Forma</td>
+					<td bgcolor="#999999">Area</td>
+					<td bgcolor="#999999">Perimetro</td>
+					<td bgcolor="#999999">Tipo</td>
+					<td bgcolor="#999999">Data</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+p, ul, li, ol, h1{
+    padding: 0px;
+    margin: 0px;
+}
+
+td{
+	border-radius: 5px;
+	height: 40px;
+	width: 200px;
+	text-align: center;
+	font-size: 20px;
+}
+
+#texto{
+	font-size: 19px;
+}
+
+#conteudo{
+	width: 500px;
+	height: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#titulo{
+	width: 500px;
+	height: 40px;
+	font-weight: bold;
+	font-size: 30px;
+	text-align:center;
+	margin-top: 20px;
+}
+
+#opcoes{
+	width: 500px;
+	height: 40px;
+}
+
+#escolha{
+	width: 100px;
+	height: 40px;
+	float: left;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#button{
+	width: 100px;
+	height: 40px;
+	float: left;
+}
+
+#calculos1{
+	padding-top: 10px;
+	padding-left: 10px;
+	height: 390px;
+	width: 240px;
+	float: left;
+}
+
+#calculos2{
+	padding-top: 10px;
+	padding-left: 10px;
+	height: 390px;
+	width: 240px;
+	float: left;
+}
+
+#calcular{
+	width: 500px;
+	height: 100px;
+	text-align: center
+}
+
+#table{
+	width: 1000px;
+	height: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}

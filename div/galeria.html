@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<title>
+            Rock
+		</title>
+	</head>
+	<body bgcolor="#000000">
+        <script src="js/javascript.js"></script>
+        <div id="header" data-imagem="1">
+            <div class="anterior" onclick="anterior()"></div>
+            <div class="proximo" onclick="proximo()"></div>
+            <div id="caixa_menu" data-selecionado="branco">
+                <a href="index.html"><div id="home_menu" onmouseover="mudarVerde()"></div></a>
+                <a href="galeria.html"><div id="item_menu" onmouseover="mudarAzul()">Galeria</div></a>
+                <a href="noticias.html"><div id="item_menu" onmouseover="mudarAmarelo()">Notícias</div></a>
+                <a href="contatos.html"><div id="item_menu" onmouseover="mudarVermelho()">Contatos</div></a>
+            </div>
+        </div>
+		<div id="conteudo">
+			<div class="imagens"><img src="imagens/microfone.jpg" title="Microfone" alt="Microfone" height="200" width="264" onclick="microfone()"></div>
+			<div class="imagens"><img src="imagens/guitarra.jpg" title="Guitarra" alt="Guitarra" height="200" width="264" onclick="guitarra()"></div>
+			<div class="imagens"><img src="imagens/baixo.jpg" title="Baixo" alt="Baixo" height="200" width="264" onclick="baixo()"></div>
+			<div class="imagens"><img src="imagens/teclado.jpg" title="Teclado" alt="Teclado" height="200" width="264" onclick="teclado()"></div>
+			<div class="imagens"><img src="imagens/violino.jpg" title="Violino" alt="Violino" height="200" width="264" onclick="violino()"></div>
+			<div class="imagens"><img src="imagens/bateria.jpg" title="Bateria" alt="Bateria" height="200" width="264" onclick="bateria()"></div>
+		</div>
+		<div id="rodape">
+			<div id="direitos">Todos os direitos reservados.</div>
+			<div id="redes_sociais">
+				<a href="contatos.html">
+					<div class="rede_social"><img src="imagens/facebook.png"></div>
+					<div class="rede_social"><img src="imagens/twitter.png"></div>
+					<div class="rede_social"><img src="imagens/googleplus.png"></div>
+				</a>
+			</div>
+		</div>
+    </body>
+</html>

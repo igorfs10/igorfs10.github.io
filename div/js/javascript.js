@@ -35,3 +35,27 @@ function proximo(){
 	}
 	document.getElementById("header").dataset.imagem = atual;
 }
+
+function guitarra(){
+	document.getElementById("header").dataset.imagem = "1";
+}
+
+function baixo(){
+	document.getElementById("header").dataset.imagem = "2";
+}
+
+function bateria(){
+	document.getElementById("header").dataset.imagem = "3";
+}
+
+function microfone(){
+	document.getElementById("header").dataset.imagem = "6";
+}
+
+function violino(){
+	document.getElementById("header").dataset.imagem = "5";
+}
+
+function teclado(){
+	document.getElementById("header").dataset.imagem = "4";
+}

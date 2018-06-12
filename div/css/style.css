@@ -129,11 +129,18 @@ p, ul, li, ol, h1{
 
 #conteudo{
 	padding-top: 50px;
+	padding-bottom: 50px;
 	width: 800px;
-	height: 500px;
-	background-color: #cccccc;
+	height: 450px;
 	margin-left: auto;
     margin-right: auto;
+}
+
+.contato{
+	width: 800px;
+	height: 450px;
+	background-color: #cccccc;
+	font-size: 30px;
 }
 
 .quadro_noticia{
@@ -152,7 +159,7 @@ p, ul, li, ol, h1{
 	text-align: center;
 	font-weight: bold;
 	font-size: 25px;
-	background-color: #555555;
+	background-color: blue;
 	border-radius: 20px 20px 0px 0px;
 	color: #ffffff;
 }
@@ -164,10 +171,77 @@ p, ul, li, ol, h1{
 }
 
 .texto_noticia{
-	width: 200px;
-	height: 200px;
-	background-color: pink;
+	width: 180px;
+	height: 180px;
+	padding: 10px;
+	background-color: #cccccc;
 	border-radius: 0px 0px 20px 20px;
+	color: #000000;
+}
+
+.texto_noticia:hover{
+	color: #444444;
+}
+
+.quadrao{
+	margin-top: 10px;
+	height: 140px;
+	width: 800px;
+}
+
+.titulo_quadrao{
+	height: 38px;
+	width: 650px;
+	margin-left: 140px;
+	padding-top: 12px;
+	padding-left: 10px;
+	font-weight: bold;
+	font-size: 25px;
+	background-color: blue;
+	border-radius: 0px 20px 0px 0px;
+	color: #ffffff;
+	float: none;
+}
+
+.imagem_quadrao{
+	float: left;
+	height: 140px;
+	width: 140px;
+}
+
+.imagem_quadrao img{
+	border-radius: 20px 0px 0px 20px;
+}
+
+.texto_quadrao{
+	height: 80px;
+	width: 650px;
+	padding-top: 10px;
+	padding-left: 10px;
+	margin-left: 140px;
+	background-color: #cccccc;
+	border-radius: 0px 0px 20px 0px;
+	color: #000000;
+}
+
+.texto_quadrao:hover{
+	color: #444444;
+}
+
+.imagens{
+	margin-top: 2px;
+	height: 200px;
+	width: 264px;
+	margin-left: 2px;
+	background-color: gray;
+	float: left;
+	transition: 0.2s;
+}
+
+.imagens:hover{
+	transform: scale(1.2);
+	cursor: pointer;
+	transition: 0.2s;
 }
 
 #rodape{

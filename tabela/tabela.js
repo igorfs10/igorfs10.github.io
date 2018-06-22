@@ -17,10 +17,9 @@ function atualizar() {
 }
 
 function limpar(){
-	var i = 1,
-		linha;
+	var linha;
 	
-	while (i < tabela.rows.length) {
+	while (1 < tabela.rows.length) {
 		linha = tabela.rows.length - 1;
 		tabela.deleteRow(linha);
 	}

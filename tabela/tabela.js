@@ -4,7 +4,6 @@ var document = document,
     plataforma = document.getElementById("plataforma");
 
 function atualizar() {
-    "use strict";
     var i,
         celulaID,
         celulaApagar;
@@ -17,14 +16,22 @@ function atualizar() {
     }
 }
 
+function limpar(){
+	var i,
+		linha;
+	
+	for (i = 1; i < tabela.rows.length;) {
+		linha = tabela.rows.length - 1;
+		tabela.deleteRow(linha);
+	}
+}
+
 function apagar(id) {
-    "use strict";
     tabela.deleteRow(id);
     atualizar();
 }
 
 function adicionar() {
-    "use strict";
     var linha = tabela.insertRow(tabela.rows.length),
         celulaID = linha.insertCell(0),
         celulaNome = linha.insertCell(1),

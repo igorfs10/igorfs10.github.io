@@ -5,8 +5,8 @@ var primeiro = 1,
 timer();
 
 function timer() { 
-proximo();
-setTimeout(timer, 5000); 
+	proximo();
+	setTimeout(timer, 5000); 
 } 
 
 function mudarVerde(){

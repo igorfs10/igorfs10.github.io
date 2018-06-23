@@ -2,6 +2,13 @@ var primeiro = 1,
 	atual = 1,
 	ultimo = 6;
 
+timer();
+
+function timer() { 
+proximo();
+setTimeout(timer, 5000); 
+} 
+
 function mudarVerde(){
 	document.getElementById("caixa_menu").dataset.selecionado = "verde";
 }

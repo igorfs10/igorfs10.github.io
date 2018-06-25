@@ -7,16 +7,26 @@
 	</head>
 	<body>
 		<div id="jogo">
-			<div id="nome">
-				<h2>Igor</h2>
-				<p id="txtTempo"></p>
+			<div id="linhaTitulo">
+				<div id="caixaTitulo">Walking Hero</div>
 			</div>
-			<div id="mapa">
-				<h2>Floresta</h2>
+				<div id="caixaNovo" onclick="novoJogo()">Novo Jogo</div>
+				<div id="caixaSalvar" onclick="salvar()">Salvar</div>
+				<div id="caixaCarregar" onclick="carregar()">Carregar</div>
+			<div id="linhaOpcoes">
 			</div>
-			<div id="nivel">
-				<h2>Nível: 51</h2>
-				<p>500/1000</p>
+			<div id="linhaInfo">
+				<div id="caixaNome">
+					<h2 id="txtNome">Igor</h2>
+					<p id="txtTempo"></p>
+				</div>
+				<div id="caixaMapa">
+					<h2 id="txtMapa">Floresta</h2>
+				</div>
+				<div id="caixaNivel">
+					<h2>Nível: 51</h2>
+					<p>500/1000</p>
+				</div>
 			</div>
 		</div>
 		<script src="jogo.js"></script>

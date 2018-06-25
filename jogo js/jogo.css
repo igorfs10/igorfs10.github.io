@@ -1,0 +1,36 @@
+p, ul, li, ol, h1, h2, h3, h4, h5, h6{
+    padding: 0px;
+    margin: 0px;
+}
+
+#jogo{
+	height: 600px;
+	width: 600px;
+	margin: auto;
+	border: 2px solid green;
+}
+
+#nome{
+	height: 46px;
+	width: 196px;
+	border: 2px solid blue;
+	float: left;
+	text-align: center;
+}
+
+#mapa{
+	height: 46px;
+	width: 196px;
+	border: 2px solid yellow;
+	float: left;
+	text-align: center;
+	line-height: 46px;
+}
+
+#nivel{
+	height: 46px;
+	width: 196px;
+	border: 2px solid red;
+	float: left;
+	text-align: center;
+}

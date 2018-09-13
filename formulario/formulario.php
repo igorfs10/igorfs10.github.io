@@ -114,9 +114,27 @@
             Formulario Banco de Dados
 		</title>
         
+        
+        <script src="js/jquery.js"></script>
+        
+        
+        <script>
+            
+            $(document).ready(function(){
+                
+                // Function para abrir a janela modal
+                $(".visualizar").click(function(){
+                    $("#container").fadeIn(100);
+                });
+                
+            });
+            
+        </script>
+        
+        
         <script>
             const BLOQUEA_NUMERO = 0,
-                  BLOQUEA_CARACTERE = 1;
+                  BLOQUEA_CARACTERES = 1;
             
             function validar(caracter, blockType, objeto){
                 objeto.style.backgroundColor = "white";
@@ -127,7 +145,7 @@
                     var letra = caracter.which;
                 }
                 
-                if(blockType == BLOQUEA_CARACTERE){
+                if(blockType == BLOQUEA_CARACTERES){
                     //Bloqueio de numero
                     if(letra < 48 || letra > 57){
                         objeto.style.backgroundColor = "red";
@@ -150,6 +168,24 @@
                 margin: 0px;
                 padding: 0px;
                 font-size: 1.1em;
+            }
+            
+            #container{
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                position: fixed;
+                z-index: 999;
+                display: none;
+            }
+            
+            #modal{
+                width: 1000px;
+                height: 900px;
+                background-color: #ffffff;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 100px;
             }
             
             #conteudo{
@@ -187,6 +223,14 @@
         </style>
 	</head>
 	<body>
+        <!-- Código para gerar a tela da modal no navegador-->
+        <div id="container">
+            <div id="modal">
+            </div>
+        </div>
+        
+        
+        <!-- Div do formulario-->
         <div id="conteudo">
             <form name="frm" method="POST" action="formulario.php">
                 <!-- Type para form
@@ -197,7 +241,7 @@
                 E-mail*:<br>
                 <input type="email" name="txtEmail" value="<?php echo($email)?>" required><br><br>
                 Telefone:*<br>
-                <input type="text" name="txtTelefone" value="<?php echo($telefone)?>" onkeypress="return validar(event, BLOQUEA_CARACTERE, this)" required><br><br>
+                <input type="text" name="txtTelefone" value="<?php echo($telefone)?>" onkeypress="return validar(event, BLOQUEA_CARACTERES, this)" required><br><br>
                 Celular:*<br>
                 <input type="text" name="txtCelular" value="<?php echo($celular)?>" pattern="[0-9]{3} [0-9]{5}-[0-9]{4}" required><br><br>
                 Data de nascimento:*<br>
@@ -232,7 +276,7 @@
                 <td width="20%" class="dadosColuna"><?php echo($rsContatos['celular']) ?></td>
                 <td width="20%" class="dadosColuna"><?php echo($rsContatos['email']) ?></td>
                 <td width="20%" class="dadosColuna">
-                    <a href=""><img src="imagens/lupa.png"></a>
+                    <a href="#" class="visualizar"><img src="imagens/lupa.png"></a>
                     <a href="formulario.php?modo=buscar&codigo=<?php echo($rsContatos['codigo']) ?>"><img src="imagens/lapis.png"></a>
                     <a href="formulario.php?modo=excluir&codigo=<?php echo($rsContatos['codigo']) ?>"><img src="imagens/lixeira.png"></a>
                 </td>

@@ -11,9 +11,12 @@
     $telefone = "";
     $celular = "";
     $dataNascimento = "";
-    $obs = "";   
+    $obs = "";
+    $botao = "Inserir";
     
-
+    //Ativa o uso de variáveis de sessão (Globais)
+    session_start();
+    
     //Se usar o Mysql connect
     //mysqli_connect($host, $user, $password);
     //mysql_selectdb($database);
@@ -40,22 +43,33 @@
         //Não necessario se usar date para converter no padrão do banco de dados
         //$dataNascimento = $data[0]."-".$data[1]."-".$data[2];
         
-        
-        //'".var."' para qualquer variavel e ".var." para inteiro
-        $sql = "INSERT INTO tblcontatos
-                (nome, email, telefone, celular, data_nascimento, obs)
-                VALUES
-                ('".$nome."', '".$email."', '".$telefone."', '".$celular."', '".$dataNascimento."', '".$obs."');";
+        if($_POST["btnEnviar"] == "Inserir"){
+            
+            //'".var."' para qualquer variavel e ".var." para inteiro
+            $sql = "INSERT INTO tblcontatos
+                    (nome, email, telefone, celular, data_nascimento, obs)
+                    VALUES
+                    ('".$nome."', '".$email."', '".$telefone."', '".$celular."', '".$dataNascimento."', '".$obs."');";
+
+
+        } else if($_POST["btnEnviar"] == "Editar"){
+            $sql = "UPDATE tblcontatos SET
+                        nome='".$nome."', email='".$email."', telefone='".$telefone."', celular='".$celular."',
+                        data_nascimento='".$dataNascimento."', obs='".$obs."'
+                    
+                    WHERE codigo=".$_SESSION["codigo"];
+        }
         
         // verifica string gerada
         //echo($sql);
-        
         mysqli_query($conexao, $sql);
         
         //Redireciona para a pagina
         header('location:formulario.php');
     }
     
+    //Verifica a existencia da variavel modo na url
+    //A variavel modo é enviada para a url através do link na tabela da consulta, assim como o id do resgistro que sera excluido ou editado
     if(isset($_GET['modo'])){
         $modo = $_GET['modo'];
         //Excluir do banco de dados
@@ -63,8 +77,31 @@
             $codigo = $_GET['codigo'];
             $sql = "DELETE FROM tblcontatos where codigo=" . $codigo;
             mysqli_query($conexao, $sql);
-            echo($sql);
             header('location:formulario.php');
+        }else if($modo == "buscar"){
+            $botao = "Editar";
+            $codigo = $_GET["codigo"];
+            
+            //Cria uma variavel de sessao para guardar o id do registro
+            $_SESSION["codigo"] = $codigo;
+            
+            $sql = "SELECT * FROM tblcontatos WHERE codigo=" . $codigo;
+            $select = mysqli_query($conexao, $sql);
+            
+            if($rsConsulta = mysqli_fetch_array($select)){
+                //Guardando o conteudo que o banco de dados retornou no select
+                $nome = $rsConsulta["nome"];
+                $email = $rsConsulta["email"];
+                $telefone = $rsConsulta["telefone"];
+                $celular = $rsConsulta["celular"];
+                $dataNascimento = $rsConsulta["data_nascimento"];
+                
+                //Converter string para data e arrumando o formato de data
+                //$dataNascimento2 = date('d/m/Y',strtotime ($dataNascimento));
+                //echo($dataNascimento2);
+                
+                $obs = $rsConsulta["obs"];
+            }
         }
     }
     
@@ -155,21 +192,19 @@
                 <!-- Type para form
                     tel, date,month,week,email,range,number,color,url
                 -->
-                ID:<br>
-                <input type="text" name="txtId" value="" readonly><br><br>
                 Nome:*<br>
-                <input type="text" name="txtNome" value="" onkeypress="return validar(event, BLOQUEA_NUMERO, this)" required><br><br>
+                <input type="text" name="txtNome" value="<?php echo($nome)?>" onkeypress="return validar(event, BLOQUEA_NUMERO, this)" required><br><br>
                 E-mail*:<br>
-                <input type="email" name="txtEmail" value="" required><br><br>
+                <input type="email" name="txtEmail" value="<?php echo($email)?>" required><br><br>
                 Telefone:*<br>
-                <input type="text" name="txtTelefone" value="" onkeypress="return validar(event, BLOQUEA_CARACTERE, this)" required><br><br>
+                <input type="text" name="txtTelefone" value="<?php echo($telefone)?>" onkeypress="return validar(event, BLOQUEA_CARACTERE, this)" required><br><br>
                 Celular:*<br>
-                <input type="text" name="txtCelular" value="" pattern="[0-9]{3} [0-9]{5}-[0-9]{4}" required><br><br>
+                <input type="text" name="txtCelular" value="<?php echo($celular)?>" pattern="[0-9]{3} [0-9]{5}-[0-9]{4}" required><br><br>
                 Data de nascimento:*<br>
-                <input type="date" name="txtDataNascimento" value="" required><br><br>
+                <input type="date" name="txtDataNascimento" value="<?php echo($dataNascimento)?>" required><br><br>
                 Obs:<br>
-                <textarea name="txtObs" rows="3" cols="50"></textarea><br><br>
-                <input type="submit" name="btnEnviar">
+                <textarea name="txtObs" rows="3" cols="50"><?php echo($obs)?></textarea><br><br>
+                <input type="submit" name="btnEnviar" value="<?php echo($botao)?>">
             </form>
         </div>
         <table border="1" width="100%" height="100%">
@@ -198,7 +233,7 @@
                 <td width="20%" class="dadosColuna"><?php echo($rsContatos['email']) ?></td>
                 <td width="20%" class="dadosColuna">
                     <a href=""><img src="imagens/lupa.png"></a>
-                    <a href=""><img src="imagens/lapis.png"></a>
+                    <a href="formulario.php?modo=buscar&codigo=<?php echo($rsContatos['codigo']) ?>"><img src="imagens/lapis.png"></a>
                     <a href="formulario.php?modo=excluir&codigo=<?php echo($rsContatos['codigo']) ?>"><img src="imagens/lixeira.png"></a>
                 </td>
             </tr>

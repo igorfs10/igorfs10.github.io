@@ -1,7 +1,7 @@
 # igorfs10.github.io
 Meu site com as atividades que fiz
 
-[Jogo da velha](https://igorfs10.github.io/jogodavelha)
+[Jogo da velha](https://igorfs10.github.io/jogodavelha/jogodavelha.html)
 
 [Primeiro site](https://igorfs10.github.io/Meu%20site/)
 

@@ -1,0 +1,73 @@
+/* Impede a seleção de objetos */
+* {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Estilo dos quadros */
+.quadro{
+	font-size: 120px;
+	background-color: #C8E6C9;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+	transition: 1s;
+}
+
+/* Estilo de quadro quando X seleciona o quadro */
+td[data-selecionado="X"]:hover{
+	background-color: #64B5F6;
+	transition: 1s;
+}
+
+/* Estilo de quadro quando O seleciona o quadro */
+td[data-selecionado="O"]:hover{
+	background-color: #E57373;
+	transition: 1s;
+}
+
+/* Estilo do quadro de informação */
+.info{
+	font-size: 27px;
+	font-weight: bold;
+	color: #003c72;
+	background-color: #B3E5FC;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+/* Estilo dos botões */
+.botao{
+	background-color: Transparent;
+	font-size:17px;
+	font-weight:bold;
+	border:none;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	outline:none;
+	transition: 1s;
+}
+
+/* Estilo dos botões selecionados */
+.botao:hover{
+	background-color: #29B6F6;
+	transition: 1s;
+}
+
+/* Estilo dos quadros dos botões */
+.jogo{
+	background-color: #B3E5FC;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}

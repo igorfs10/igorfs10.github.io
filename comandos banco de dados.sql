@@ -55,6 +55,73 @@
 --ORDER BY l.isbn;
 
 
+--SELECT e.emp_no, CONCAT(e.first_name, ' ', e.last_name) AS nome FROM employees AS e LIMIT 100; Select concatenando e colocando apelido no campo
+--SELECT e.emp_no, CONCAT_WS(' ', e.first_name, e.last_name) AS nome FROM employees AS e LIMIT 100; Select concatenando sempre usando o primeiro argumento como separação
+
+CREATE VIEW funcionarios_por_departamento AS 					--Cria uma view baseado nesse select
+	SELECT e.emp_no,
+		CONCAT_WS(' ', e.first_name, e.last_name) AS nome,
+		de.dept_no,
+		d.dept_name
+		FROM employees AS e,
+		dept_emp AS de,
+		departments AS d
+		WHERE e.emp_no = de.emp_no
+		AND d.dept_no = de.dept_no
+		AND de.to_date = '9999-01-01'
+;
+SELECT * FROM funcionarios_por_departamento;					--Da um select na view
+
+
+
+SELECT e.emp_no AS Cadastro,
+		CONCAT_WS(' ', e.first_name, e.last_name) AS Nome_do_Funcionario,
+		d.dept_name AS Nome_do_Departamento,
+		s.salary
+FROM employees AS e,
+		dept_emp AS de,
+		departments AS d,
+		dept_manager AS dm,
+		salaries AS s
+WHERE e.emp_no = de.emp_no
+		AND dm.emp_no = de.emp_no
+		AND s.emp_no = de.emp_no
+		AND d.dept_no = de.dept_no
+		AND s.to_date = '9999-01-01';
+		
+		
+SELECT e.emp_no AS Cadastro,
+		CONCAT_WS(' ', e.first_name, e.last_name) AS Nome_do_Funcionario,
+		d.dept_name AS Nome_do_Departamento,
+		t.title AS Cargo,
+		s.salary AS Salario
+FROM employees AS e,
+		dept_emp AS de,
+		departments AS d,
+		salaries AS s,
+		titles AS t
+WHERE e.emp_no = de.emp_no
+		AND t.emp_no = e.emp_no
+		AND s.emp_no = de.emp_no
+		AND d.dept_no = de.dept_no
+		AND t.to_date = '9999-01-01'
+		AND s.to_date = '9999-01-01'
+		AND de.to_date = '9999-01-01'
+ORDER BY e.first_name, e.last_name
+LIMIT 10;
+
+SELECT e.emp_no,
+	CONCAT_WS(' ', e.first_name, e.last_name) AS nome,
+    de.dept_no,
+    d.dept_name
+    FROM employees AS e,
+    dept_emp AS de,
+    departments AS d
+    WHERE e.emp_no = de.emp_no
+    AND d.dept_no = de.dept_no
+    AND de.to_date = '9999-01-01'
+    ORDER by nome LIMIT 100;
+
 
 CREATE TABLE tbl_editora (
 	cnpjEditora VARCHAR(14) NOT NULL PRIMARY KEY,

@@ -1,0 +1,74 @@
+@font-face{
+    font-family: lato;
+    src: url('../fonts/Lato-Regular.ttf');
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    font-family: lato; 
+}
+
+body{
+    background-color: #222222;
+    height: 5000px;
+}
+
+#cabecalho{
+    width: 100%;
+    height: 50px;
+    background-color: #00008c;
+    position: fixed;
+    border-bottom: 3px solid #ed0000;
+    border-top: 2px solid #ffffff;
+    z-index: 5;
+}
+
+#imagemLogo{
+    width: 49%;
+    height: 50px;
+    margin-right: 1%;
+    line-height: 50px;
+    float: left;
+    text-align: right;
+}
+
+#imagemLogo img{
+    width: 50px;
+    height: 50px;
+    transition: 1s;
+}
+
+#imagemLogo img:hover{
+    width: 50px;
+    height: 50px;
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+#textoLogo{
+    width: 49%;
+    height: 50px;
+    margin-left: 1%;
+    line-height: 50px;
+    float: left;
+    text-align: left;
+    color: #eeeeee;
+    font-size: 30px;
+}
+
+#caixaEspecial{
+    width: 100%;
+    height: 54px;
+}
+
+#alo{
+    height: 700px;
+    width: 700px;
+}
+
+.slider{
+    height: 50px;
+    width: 10px;
+}

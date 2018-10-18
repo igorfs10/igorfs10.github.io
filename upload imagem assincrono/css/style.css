@@ -1,0 +1,17 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+
+#visualizar{
+    width: 400px;
+    height: 400px;
+    background-color: aqua;
+}
+
+#visualizar img{
+    max-width: 400px;
+    max-height: 400px;
+    background-color: aqua;
+}

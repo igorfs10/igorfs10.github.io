@@ -13,7 +13,7 @@
         echo("Erro na conexão com banco de dados.");
     }
 
-    if(isset($_POST["btnSubmit"])){
+    if(isset($_POST["txtNome"])){
         $nome = $_POST["txtNome"];
         $foto = $_POST["txtFoto"];
         
@@ -38,12 +38,26 @@
         $(document).ready(function(){
             // Na ação do live do elemento file, que significa algo ser carregado com um arquivo(foto), será acionado
             $("#foto").live("change",function(){
-                //Forçando um submit no formulario do file upload para conseguir realizar o upload  da foto sem um clique de um botão
                 
-                //O retorno da página upload.php que será submetido pelo formulário deverá ser descarregada na div visualizar. Para isso usamos o atributo target do ajaxForm (isso é conhecido como callback)
-                $("#frmFoto").ajaxForm({
-                    target:"#visualizar"
-                }).submit();
+                //Coloca um gif animado para criar uma interação com o usuario
+                $("#visualizar").html("<img src='imagens/ajax-loader.gif'>");
+                
+                setTimeout(function(){
+                    //Forçando um submit no formulario do file upload para conseguir realizar o upload  da foto sem um clique de um botão
+                
+                    //O retorno da página upload.php que será submetido pelo formulário deverá ser descarregada na div visualizar. Para isso usamos o atributo target do ajaxForm (isso é conhecido como callback)
+                    $("#frmFoto").ajaxForm({
+                        target:"#visualizar"
+                    }).submit();
+                }, 2000);
+            });
+            //Colocando gif animado no click do botao
+            $("#btnSalvar").click(function(){
+                 $("#visualizar").html("<img src='imagens/ajax-salvando.gif'>");
+                
+                setTimeout(function(){
+                    frm.submit();
+                }, 2000);
             });
         });
         </script>
@@ -61,7 +75,7 @@
             <br>
             <input type="text" name="txtFoto">
             <br>
-            <input type="submit" name="btnSubmit">
+            <input type="button" id="btnSalvar" name="btnSubmit" value="Salvar">
         </form>
         <br>
         <br>

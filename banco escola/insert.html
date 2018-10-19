@@ -1,13 +1,6 @@
 <html>
 	<head>
 	</head>
-	<style>
-		#insertDoAluno, #insertDoProfessor{
-			width = 100%;
-			height = 500px;
-			overflow = auto;
-		}
-	</style>
 	<body>
 		<b>Aluno</b>
 		<div id="insertDoAluno">
@@ -28,9 +21,9 @@
 		<div id="insertDaNota">
 		</div>
 		<script>
-			const NOMES = ["Maria", "Laura", "Caio", "Adriana", "Julio", "Ariele", "Lucas", "Elimar", "Sandra", "Larissa", "Rafael", "Bruno", "Bruna", "Danilo", "Carolina", "Walter", "Michele", "Elissa", "Luis", "Felipe", "Eliana", "Chico", "Roberto", "Ana", "Elisangela", "Murilo", "Joana", "Vitoria", "Sara", "Katy", "Fabio", "Juliana", "Henrique", "Juliano", "Tony", "Mario", "Samanta", "Davi", "Selma", "Geraldo", "Lucia", "Jacira", "Mauricio", "Francisco", "Jessica", "Renata", "Adilson"];
+			const NOMES = ["Maria", "Laura", "Caio", "Adriana", "Julio", "Ariele", "Lucas", "Elimar", "Sandra", "Larissa", "Rafael", "Bruno", "Bruna", "Danilo", "Carolina", "Walter", "Michele", "Elissa", "Luis", "Felipe", "Eliana", "Chico", "Roberto", "Ana", "Elisangela", "Murilo", "Joana", "Vitoria", "Sara", "Katy", "Fabio", "Juliana", "Henrique", "Juliano", "Tony", "Mario", "Samanta", "Davi", "Selma", "Geraldo", "Lucia", "Jacira", "Mauricio", "Francisco", "Jessica", "Renata", "Adilson", "Luiza", "Hugo", "Geovanna"];
 			const SOBRENOMES = ["Santos", "Silva", "Sampaio", "Costa", "Silva", "Lima", "Feitosa", "Cavalcante", "Furtado", "Campos", "Soeiro", "Delmondes", "Matos", "Doria", "França", "Chaves", "Saldanha", "Rosa", "Almeida", "Simpson", "Cintra"];
-			const NOME_MAE = ["Maria", "Laura", "Adriana", "Ariele", "Sandra", "Larissa", "Bruna", "Carolina", "Michele", "Elissa", "Eliana","Ana", "Elisangela", "Joana", "Vitoria", "Sara", "Katy", "Juliana", "Samanta", "Selma", "Lucia", "Jacira", "Jessica", "Renata"]; 
+			const NOME_MAE = ["Maria", "Laura", "Adriana", "Ariele", "Sandra", "Larissa", "Bruna", "Carolina", "Michele", "Elissa", "Eliana","Ana", "Elisangela", "Joana", "Vitoria", "Sara", "Katy", "Juliana", "Samanta", "Selma", "Lucia", "Jacira", "Jessica", "Renata", "Luiza", "Geovanna"]; 
 			
 			const RUAS = ["Avenida Itaquera", "Rua Santos", "Rua Estados Unidos", "Rua Gonzaga", "Avenida Jeremias", "Avenida Agua Branca", "Rua Lima", "Rua Castelo Branco", "Rua São Rafael", "Rua Fernando Pessoa", "Estrada Da Barreira Grande", "Rua Dias", "Avenida Guerreiro", "Alameda Ulisses", "Via João de Goes"];
 			const EMAIL = ["@gmail.com", "@uol.com.br", "@senai.com", "@terra.com.br", "@ig.com.br"];
@@ -91,17 +84,17 @@
 			
 			for(i=0; i < 50; i++){
 				let pessoa = gerarPessoa("aluno");
-				insertAluno = `INSERT INTO aluno (nome, endereco, telefone, email, nomeDaMae, idTurma) VALUES ('${pessoa.nome}', '${pessoa.endereco}','${pessoa.telefone}', '${pessoa.email}', '${pessoa.nomeDaMae}', ${pessoa.idTurma});<br>` + insertAluno;
+				insertAluno = `INSERT INTO aluno (nome, endereco, telefone, email, nomeDaMae, idTurma) VALUES ('${pessoa.nomeCompleto}', '${pessoa.endereco}','${pessoa.telefone}', '${pessoa.email}', '${pessoa.nomeDaMae}', ${pessoa.idTurma});<br>` + insertAluno;
 			}
 			insertDoAluno.innerHTML = insertAluno;
 			
 			for(i=0; i < 6; i++){
 				let pessoa = gerarPessoa("professor");
-				insertProfessor = `INSERT INTO professor (nome, endereco, telefone, email, nomeDaMae) VALUES ('${pessoa.nome}', '${pessoa.endereco}','${pessoa.telefone}', '${pessoa.email}', '${pessoa.nomeDaMae}');<br>` + insertProfessor;
+				insertProfessor = `INSERT INTO professor (nome, endereco, telefone, email, nomeDaMae) VALUES ('${pessoa.nomeCompleto}', '${pessoa.endereco}','${pessoa.telefone}', '${pessoa.email}', '${pessoa.nomeDaMae}');<br>` + insertProfessor;
 			}
 			insertDoProfessor.innerHTML = insertProfessor;
 			
-			for(i=0; i < 80; i++){
+			for(i=0; i < 2; i++){
 				let idAluno = sortearNumero2(2, 65);
 				let idAtividade = sortearNumero2(1, 4);
 				let nota = sortearNumero2(0, 5);
@@ -109,6 +102,18 @@
 				insertNota = `INSERT INTO aluno_atividade (idAluno, idAtividade, nota) VALUES (${idAluno}, ${idAtividade}, ${nota});<br>` + insertNota; 
 			}
 			insertDaNota.innerHTML = insertNota;
+			
+			for(i=0; i < 80; i++){
+				let idProfessor = sortearNumero2(1,11);
+				let idTurma = sortearNumero2(2,7);
+				let idAtividade = sortearNumero2(1, 4);
+				let idDisciplina = sortearNumero2(1, 5);
+				let horario = DIAS[sortearNumero(DIAS.length)] + ", " + sortearNumero2(7,18) + ":00";
+				
+				insertAula = `INSERT INTO turma_atividade_professor_disciplina (idProfessor, idTurma, idAtividade, idDisciplina, horario) VALUES (${idProfessor}, ${idTurma}, ${idAtividade}, ${idDisciplina}, '${horario}');<br>` + insertAula; 
+			}
+			insertDaAula.innerHTML = insertAula;
+			
 		</script>
 	</body>
 </html>

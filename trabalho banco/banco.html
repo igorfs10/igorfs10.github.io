@@ -1,0 +1,120 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<b>Aluno</b>
+		<div id="insertDoAluno">
+		</div>
+		<br>
+		<br>
+		<b>Professor</b>
+		<div id="insertDoProfessor">
+		</div>
+		<br>
+		<br>
+		<b>Aula</b>
+		<div id="insertDaAula">
+		</div>
+		<br>
+		<br>
+		<b>Nota</b>
+		<div id="insertDaNota">
+		</div>
+		<script>
+			const NOMES = ["Maria", "Laura", "Caio", "Adriana", "Julio", "Ariele", "Lucas", "Elimar", "Sandra", "Larissa", "Rafael", "Bruno", "Bruna", "Danilo", "Carolina", "Walter", "Michele", "Elissa", "Luis", "Felipe", "Eliana", "Chico", "Roberto", "Ana", "Elisangela", "Murilo", "Joana", "Vitoria", "Sara", "Katy", "Fabio", "Juliana", "Henrique", "Juliano", "Tony", "Mario", "Samanta", "Davi", "Selma", "Geraldo", "Lucia", "Jacira", "Mauricio", "Francisco", "Jessica", "Renata", "Adilson", "Luiza", "Hugo", "Geovanna"];
+			const SOBRENOMES = ["Santos", "Silva", "Sampaio", "Costa", "Silva", "Lima", "Feitosa", "Cavalcante", "Furtado", "Campos", "Soeiro", "Delmondes", "Matos", "Doria", "França", "Chaves", "Saldanha", "Rosa", "Almeida", "Simpson", "Cintra"];
+			const NOME_MAE = ["Maria", "Laura", "Adriana", "Ariele", "Sandra", "Larissa", "Bruna", "Carolina", "Michele", "Elissa", "Eliana","Ana", "Elisangela", "Joana", "Vitoria", "Sara", "Katy", "Juliana", "Samanta", "Selma", "Lucia", "Jacira", "Jessica", "Renata", "Luiza", "Geovanna"]; 
+			
+			const RUAS = ["Avenida Itaquera", "Rua Santos", "Rua Estados Unidos", "Rua Gonzaga", "Avenida Jeremias", "Avenida Agua Branca", "Rua Lima", "Rua Castelo Branco", "Rua São Rafael", "Rua Fernando Pessoa", "Estrada Da Barreira Grande", "Rua Dias", "Avenida Guerreiro", "Alameda Ulisses", "Via João de Goes"];
+			const EMAIL = ["@gmail.com", "@uol.com.br", "@senai.com", "@terra.com.br", "@ig.com.br"];
+			const DIAS = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
+			
+			//sorteia com max - 1
+			function sortearNumero(max){
+				return Math.floor(Math.random() * ((max - 1) - 0 + 1)) + 0;
+			}
+			
+			function sortearNumero2(min, max){
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			
+			function gerarTelefone(){
+				if(sortearNumero(2) == 0){
+					telefone = "" + sortearNumero(10) + sortearNumero(10) + sortearNumero(10) + sortearNumero(10) + "-" + sortearNumero(10) + sortearNumero(10) + sortearNumero(10) + sortearNumero(10);
+				}else{
+					telefone = "9" + sortearNumero(10) + sortearNumero(10) + sortearNumero(10) + sortearNumero(10) + "-" + sortearNumero(10) + sortearNumero(10) + sortearNumero(10) + sortearNumero(10);
+				}
+				return telefone;
+			}
+			
+			function gerarPessoa(profissao){
+				let nome = NOMES[sortearNumero(NOMES.length)];
+				let sobreNome = SOBRENOMES[sortearNumero(SOBRENOMES.length)];
+				if (profissao == "aluno"){
+					let pessoa = {
+					nome: nome,
+					sobreNome: sobreNome,
+					nomeCompleto: nome + " " + sobreNome,
+					endereco: RUAS[sortearNumero(RUAS.length)] + ", " + sortearNumero(1501),
+					telefone: gerarTelefone(),
+					email: nome.toLowerCase() + sobreNome.toLowerCase() + EMAIL[sortearNumero(EMAIL.length)],
+					nomeDaMae: NOME_MAE[sortearNumero(NOME_MAE.length)],
+					idTurma: sortearNumero2(2,7)
+					};
+					return pessoa;
+				}else{
+					let pessoa = {
+					nome: nome,
+					sobreNome: sobreNome,
+					nomeCompleto: nome + " " + sobreNome,
+					endereco: RUAS[sortearNumero(RUAS.length)] + ", " + sortearNumero(1501),
+					telefone: gerarTelefone(),
+					email: nome.toLowerCase() + sobreNome.toLowerCase() + EMAIL[sortearNumero(EMAIL.length)],
+					nomeDaMae: NOME_MAE[sortearNumero(NOME_MAE.length)]
+					};
+					return pessoa;
+				}
+			}
+			
+			let pessoa = gerarPessoa("aluno");
+			let insertAluno = "";
+			let insertProfessor = "";
+			let insertAula = "";
+			let insertNota = "";
+			
+			for(i=0; i < 50; i++){
+				let pessoa = gerarPessoa("aluno");
+				insertAluno = `INSERT INTO aluno (nome, endereco, telefone, email, nomeDaMae, idTurma) VALUES ('${pessoa.nomeCompleto}', '${pessoa.endereco}','${pessoa.telefone}', '${pessoa.email}', '${pessoa.nomeDaMae}', ${pessoa.idTurma});<br>` + insertAluno;
+			}
+			insertDoAluno.innerHTML = insertAluno;
+			
+			let codCliente = 1000;
+			for(i=0; i < 15; i++){
+				let pessoa = gerarPessoa("professor");
+				codCliente += 1;
+				insertProfessor = insertProfessor + `INSERT INTO tbl_cliente (c_codiclien, c_nomeclien) VALUES ('${codCliente}', '${pessoa.nomeCompleto}');<br>`;
+			}
+			insertDoProfessor.innerHTML = insertProfessor;
+			
+			codCliente = 1000000;
+			for(i=0; i < 6; i++){
+				let pessoa = gerarPessoa("professor");
+				codCliente += 1;
+				insertProfessor = insertProfessor + `INSERT INTO tbl_vendedor (c_codivende, c_nomevende) VALUES ('${codCliente}', '${pessoa.nomeCompleto}');<br>` ;
+			}
+			insertDoProfessor.innerHTML = insertProfessor;
+			
+			for(i=0; i < 80; i++){
+				let idProfessor = sortearNumero2(1,11);
+				let idTurma = sortearNumero2(2,7);
+				let idAtividade = sortearNumero2(1, 4);
+				let idDisciplina = sortearNumero2(1, 5);
+				let horario = DIAS[sortearNumero(DIAS.length)] + ", " + sortearNumero2(7,18) + ":00";
+				
+				insertAula = `INSERT INTO turma_atividade_professor_disciplina (idProfessor, idTurma, idAtividade, idDisciplina, horario) VALUES (${idProfessor}, ${idTurma}, ${idAtividade}, ${idDisciplina}, '${horario}');<br>` + insertAula; 
+			}
+			insertDaAula.innerHTML = insertAula;
+			
+		</script>
+	</body>
+</html>

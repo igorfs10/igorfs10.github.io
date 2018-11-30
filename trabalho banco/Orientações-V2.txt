@@ -1,0 +1,36 @@
+*********************************************************************
+*                  SITUAÇÃO DE APRENDIZAGEM SOMATIVA                *
+*                            BANCO  DE DADOS                        *
+*                            INF3-M - 2-2018                        *
+*********************************************************************
+
+------ ATIVIDADES -------
+
+1 - Importar o banco de dados que se encontra em ..APOIO\Prof Celso\Banco de Dados\SAS 01\db_somativa.sql
+2 - Criar o relacinamento entre as tabelas;
+
+3 - Criar uma stored_procedure que calcule a comissão dos vendedores
+ de acordo com o seguinte padrão:
+
+
+	a) As comissões são pagas sempre no dia 5 de cada mês e o valor pago deve
+ ficar armazenado para auditoria futura;
+
+	b) Se a venda for menor que 25000 o vendedor receberá 2% de comissão;
+	c) Se a venda for maior que 25000 e menor que 50000 pagar 5% de comissão ao vendedor;
+	d) Se a venda for maior que 50000 o vendedor receberá 8% de comissão.
+
+4 - Criar View para os seguintes relatórios:
+
+	a) Vendas por vendedor, com total. O resultato deverá apresentar o nome do vendedor e o total de vendas (em dinheiro) efetuadas;
+	b) Compras efetuadas por cliente. O resultado deverá apresentar o nome do cliente e a relação de compras que já foram efetuadas por ele;
+	c) Listar os nomes, data de pagamento e valor da comissão a pagar;
+
+                 --------------------------
+                   O B S E R V A Ç Õ E S:
+                 --------------------------
+
+- O trabalho é individual
+- Entregar até 07-11-2018 impreterívelmente
+
+*********************************************************************

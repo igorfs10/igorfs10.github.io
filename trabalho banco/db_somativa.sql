@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: localhost    Database: db_somativa
 -- ------------------------------------------------------
--- Server version	5.6.10-log
+-- Server version	5.7.23-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,22 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Temporary view structure for view `compras_efetuadas_por_cliente`
+--
+
+DROP TABLE IF EXISTS `compras_efetuadas_por_cliente`;
+/*!50001 DROP VIEW IF EXISTS `compras_efetuadas_por_cliente`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `compras_efetuadas_por_cliente` AS SELECT 
+ 1 AS `Cliente`,
+ 1 AS `Numero_Da_Venda`,
+ 1 AS `Produto`,
+ 1 AS `Valor_Produto`,
+ 1 AS `Total_Da_Venda`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `tbl_cliente`
@@ -84,9 +100,9 @@ CREATE TABLE `tbl_itens_venda` (
   PRIMARY KEY (`n_numeivenda`),
   KEY `fk_tbl_venda_tbl_itens_venda_idx` (`n_numevenda`),
   KEY `fk_tbl_produto_tbl_itens_venda_idx` (`n_numeprodu`),
-  CONSTRAINT `fk_tbl_venda_tbl_itens_venda` FOREIGN KEY (`n_numevenda`) REFERENCES `tbl_venda` (`n_numevenda`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tbl_produto_tbl_itens_venda` FOREIGN KEY (`n_numeprodu`) REFERENCES `tbl_produto` (`n_numeprodu`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_tbl_produto_tbl_itens_venda` FOREIGN KEY (`n_numeprodu`) REFERENCES `tbl_produto` (`n_numeprodu`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_venda_tbl_itens_venda` FOREIGN KEY (`n_numevenda`) REFERENCES `tbl_venda` (`n_numevenda`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +111,7 @@ CREATE TABLE `tbl_itens_venda` (
 
 LOCK TABLES `tbl_itens_venda` WRITE;
 /*!40000 ALTER TABLE `tbl_itens_venda` DISABLE KEYS */;
-INSERT INTO `tbl_itens_venda` VALUES (1,1,1,10.00,1,0.00),(2,2,1,10.00,1,0.00),(3,2,5,18.00,10,2.00),(4,3,4,40.00,4,40.00),(5,3,1,10.00,2,10.00);
+INSERT INTO `tbl_itens_venda` VALUES (1,1,1,10.00,1,0.00),(2,2,1,10.00,1,0.00),(3,2,5,8.00,10,2.00),(4,3,4,40.00,4,40.00),(5,3,1,10.00,2,10.00),(6,4,8,48000.00,1,0.00),(7,5,9,70000.00,1,0.00);
 /*!40000 ALTER TABLE `tbl_itens_venda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,9 +160,9 @@ CREATE TABLE `tbl_venda` (
   PRIMARY KEY (`n_numevenda`),
   KEY `fk_tbl_vendedor_tbl_venda_idx` (`n_numevende`),
   KEY `fk_tbl_cliente_tbl_venda_idx` (`n_numeclien`),
-  CONSTRAINT `fk_tbl_vendedor_tbl_venda` FOREIGN KEY (`n_numevende`) REFERENCES `tbl_vendedor` (`n_numevende`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tbl_cliente_tbl_venda` FOREIGN KEY (`n_numeclien`) REFERENCES `tbl_cliente` (`n_numeclien`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_tbl_cliente_tbl_venda` FOREIGN KEY (`n_numeclien`) REFERENCES `tbl_cliente` (`n_numeclien`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_vendedor_tbl_venda` FOREIGN KEY (`n_numevende`) REFERENCES `tbl_vendedor` (`n_numevende`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,7 +171,7 @@ CREATE TABLE `tbl_venda` (
 
 LOCK TABLES `tbl_venda` WRITE;
 /*!40000 ALTER TABLE `tbl_venda` DISABLE KEYS */;
-INSERT INTO `tbl_venda` VALUES (1,'V0001',1,1,10.00,0.00,10.00,'2018-11-01'),(2,'V0002',2,3,20.00,2.00,18.00,'2018-11-01'),(3,'V0003',3,1,100.00,50.00,50.00,'2018-11-01');
+INSERT INTO `tbl_venda` VALUES (1,'V0001',1,1,10.00,0.00,10.00,'2018-11-01'),(2,'V0002',2,3,20.00,2.00,18.00,'2018-11-01'),(3,'V0003',3,1,100.00,50.00,50.00,'2018-11-01'),(4,'V0004',4,2,48000.00,0.00,48000.00,'2018-11-02'),(5,'V0005',1,4,70000.00,0.00,70000.00,'2018-11-03');
 /*!40000 ALTER TABLE `tbl_venda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,6 +199,55 @@ LOCK TABLES `tbl_vendedor` WRITE;
 INSERT INTO `tbl_vendedor` VALUES (1,'1000001','Luis Sampaio'),(2,'1000002','Henrique Cintra'),(3,'1000003','Juliano Saldanha'),(4,'1000004','Roberto Delmondes'),(5,'1000005','Rafael Santos'),(6,'1000006','Juliana Cintra');
 /*!40000 ALTER TABLE `tbl_vendedor` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `vendas_por_vendedor`
+--
+
+DROP TABLE IF EXISTS `vendas_por_vendedor`;
+/*!50001 DROP VIEW IF EXISTS `vendas_por_vendedor`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vendas_por_vendedor` AS SELECT 
+ 1 AS `Funcionário`,
+ 1 AS `Total_Da_Venda`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `compras_efetuadas_por_cliente`
+--
+
+/*!50001 DROP VIEW IF EXISTS `compras_efetuadas_por_cliente`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `compras_efetuadas_por_cliente` AS select `cliente`.`c_nomeclien` AS `Cliente`,`venda`.`c_codivenda` AS `Numero_Da_Venda`,`produto`.`c_descprodu` AS `Produto`,`item`.`n_valoivenda` AS `Valor_Produto`,`venda`.`n_totavenda` AS `Total_Da_Venda` from (((`tbl_cliente` `cliente` join `tbl_venda` `venda`) join `tbl_itens_venda` `item`) join `tbl_produto` `produto`) where ((`venda`.`n_numeclien` = `cliente`.`n_numeclien`) and (`item`.`n_numevenda` = `venda`.`n_numevenda`) and (`item`.`n_numeprodu` = `produto`.`n_numeprodu`)) order by `cliente`.`c_nomeclien` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vendas_por_vendedor`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vendas_por_vendedor`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vendas_por_vendedor` AS select `vendedor`.`c_nomevende` AS `Funcionário`,`venda`.`n_totavenda` AS `Total_Da_Venda` from (`tbl_vendedor` `vendedor` join `tbl_venda` `venda`) where (`venda`.`n_numevende` = `vendedor`.`n_numevende`) order by `vendedor`.`c_nomevende` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -193,4 +258,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-30 11:26:20
+-- Dump completed on 2018-12-02 11:42:10

@@ -1,0 +1,28 @@
+CREATE VIEW vendas_por_vendedor AS
+	SELECT vendedor.c_nomevende as Funcionário,
+		venda.n_totavenda as Total_Da_Venda
+	FROM tbl_vendedor AS vendedor,
+		tbl_venda AS venda
+	WHERE venda.n_numevende = vendedor.n_numevende
+	ORDER BY Funcionário
+;
+
+SELECT * FROM vendas_por_vendedor;
+
+CREATE VIEW compras_efetuadas_por_cliente AS
+	SELECT cliente.c_nomeclien AS Cliente,
+		venda.c_codivenda AS Numero_Da_Venda,
+		produto.c_descprodu AS Produto,
+		item.n_valoivenda AS Valor_Produto,
+		venda.n_totavenda AS Total_Da_Venda
+	FROM tbl_cliente AS cliente,
+		tbl_venda AS venda,
+		tbl_itens_venda AS item,
+		tbl_produto AS produto
+	WHERE venda.n_numeclien = cliente.n_numeclien
+		AND item.n_numevenda = venda.n_numevenda
+		AND item.n_numeprodu = produto.n_numeprodu
+	ORDER BY Cliente
+;
+
+SELECT * FROM compras_efetuadas_por_cliente;
